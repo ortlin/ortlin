@@ -1,16 +1,29 @@
-# Fresh project
+# Numfray - OpenAI API Frontend Graphical User Interface (GUI)
 
-Your new Fresh project is ready to go. You can follow the Fresh "Getting
-Started" guide here: https://fresh.deno.dev/docs/getting-started
+Welcome to Numfray! This project is all about making it easier for you to
+interact with the OpenAI API through a simple and friendly graphical user
+interface.
+
+Whether you're a developer or just curious about AI, Numfray provides an easy
+way to explore the power of OpenAI’s API without getting bogged down in
+technical details.
 
 ### Usage
 
-Make sure to install Deno: https://deno.land/manual/getting_started/installation
+1. Install Deno
 
-Then start the project:
+```sh
+curl -fsSL https://deno.land/install.sh | sh
+```
+
+2. Clone this repository
+
+```
+git clone https://github.com/numfray/numfray.git
+```
+
+3. Start the project
 
 ```
 deno task start
 ```
-
-This will watch the project directory and restart as necessary.
