@@ -1,6 +1,6 @@
 import { Button } from "../components/Button.tsx";
 import { KeyRound } from "lucide-preact";
-import ApiKeyAddModal from "../components/ApiKeyAddModal.tsx";
+import ModalApiKeyAdd from "../components/ModalApiKeyAdd.tsx";
 import { toggleIsAddFormOpen } from "../signals/apiKeyManageSignal.ts";
 
 export default function ApiKeyManage() {
@@ -17,7 +17,7 @@ export default function ApiKeyManage() {
             >
                 Add OpenAI API key
             </Button>
-            <ApiKeyAddModal />
+            <ModalApiKeyAdd />
         </div>
     );
 }

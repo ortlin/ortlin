@@ -8,7 +8,7 @@ import { KeyRound } from "lucide-preact";
 import Input, { type ChangeHandler } from "./Input.tsx";
 import { useSignal } from "@preact/signals";
 
-export default function ApiKeyAddModal() {
+export default function ModalApiKeyAdd() {
     const key = useSignal("");
     const handleOverlayMouseDown = () => {
         toggleIsAddFormOpen();
