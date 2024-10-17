@@ -87,7 +87,8 @@ const categories: Category[] = [
 ];
 
 export default function Menu(props: Props) {
-  const isActive = (path: string) => props.pathName.startsWith(path);
+  const isCategoryActive = (path: string) => props.pathName.startsWith(path);
+  const isSubCategoryActive = (path: string) => path === props.pathName;
 
   return (
     <nav class="flex flex-col gap-7 text-slate-100">
@@ -95,7 +96,7 @@ export default function Menu(props: Props) {
         <div>
           <a
             class={`flex gap-2.5 items-center ${
-              isActive(category.slug) && "text-lime-400"
+              isCategoryActive(category.slug) && "text-lime-400"
             }`}
             href={category.subCategories[0].slug}
           >
@@ -107,7 +108,7 @@ export default function Menu(props: Props) {
               <a
                 href={subCategory.slug}
                 class={`leading-[29px] block ${
-                  isActive(subCategory.slug) && "text-lime-400"
+                  isSubCategoryActive(subCategory.slug) && "text-lime-400"
                 }`}
               >
                 {subCategory.heading}
