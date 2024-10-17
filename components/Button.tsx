@@ -1,23 +1,26 @@
-import { JSX } from "preact";
 import { LucideIcon } from "lucide-preact";
-import { IS_BROWSER } from "$fresh/runtime.ts";
 import Icon from "./Icon.tsx";
+import type { ComponentChildren } from "preact";
 
-interface Props extends JSX.HTMLAttributes<HTMLButtonElement> {
+interface Props {
   Icon: LucideIcon;
   strokeColor: string;
   textColor: string;
+  onClick?: VoidFunction;
+  link?: string;
+  children: ComponentChildren;
 }
 
 export function Button(props: Props) {
+  const Tag = props.link ? "a" : "button";
   return (
-    <button
-      {...props}
-      disabled={!IS_BROWSER || props.disabled}
+    <Tag
+      href={props.link}
+      onClick={props.onClick}
       class={`px-3 py-2.5 flex gap-2 rounded-xl border text-sm items-center justify-center font-semibold ${props.strokeColor} ${props.textColor}`}
     >
       <Icon Icon={props.Icon} size={17} />
       {props.children}
-    </button>
+    </Tag>
   );
 }
