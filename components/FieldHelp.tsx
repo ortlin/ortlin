@@ -23,22 +23,22 @@ interface Props {
 export default function FieldHelp(props: Props) {
   return props.helpers
     ? (
-      <div class="mt-1.5 flex items-baseline gap-1 text-xs text-slate-400 leading-[17px]">
+      <div class="mt-1.5 text-xs text-slate-400 leading-[17px]">
         {props.helpers.map((helper) => {
           switch (helper.type) {
             case "text":
-              return <div>{helper.content}</div>;
+              return <span class="">{helper.content}</span>;
             case "highlight":
               return (
-                <div class="bg-slate-700 rounded px-1 py-0.5">
+                <span class="bg-slate-700 rounded px-1 py-0.5">
                   {helper.content}
-                </div>
+                </span>
               );
             case "anchor":
               return (
                 <a
                   href={helper.link}
-                  class="block font-semibold text-blue-400"
+                  class="font-semibold text-blue-400"
                   target="_blank"
                 >
                   {helper.content}

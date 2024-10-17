@@ -26,7 +26,7 @@ export default function Textarea(props: Props) {
         value={props.value}
         onChange={handleChange}
         rows={4}
-        class="text-slate-300 px-4 py-2 bg-transparent rounded-xl border border-slate-700 outline-none focus:border-lime-600 w-full min-h-14"
+        class="text-slate-300 px-4 py-2 bg-transparent rounded-xl border border-slate-700 outline-none focus:border-lime-600 w-full min-h-14 block"
       />
       <FieldHelp
         helpers={props.helpers}
