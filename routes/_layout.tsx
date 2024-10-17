@@ -1,8 +1,9 @@
 import type { PageProps } from "$fresh/server.ts";
 import { Button } from "../components/Button.tsx";
-import { Github, Heart } from "lucide-preact";
+import { Github } from "lucide-preact";
 import Menu from "../components/Menu.tsx";
 import ApiKeyManage from "../islands/ApiKeyManage.tsx";
+import ButtonDonate from "../islands/ButtonDonate.tsx";
 
 export default function Layout(props: PageProps) {
   const pathName = new URL(props.url).pathname;
@@ -33,14 +34,7 @@ export default function Layout(props: PageProps) {
           >
             Contribute to project
           </Button>
-          <Button
-            Icon={Heart}
-            strokeColor="border-cyan-800"
-            textColor="text-cyan-300"
-            link="https://opencollective.com/numfray/donate"
-          >
-            Donate to our collective
-          </Button>
+          <ButtonDonate />
         </div>
         <div class="flex-grow p-6 overflow-y-auto">
           <props.Component />

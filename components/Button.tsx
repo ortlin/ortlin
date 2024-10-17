@@ -10,6 +10,7 @@ interface Props {
   Icon?: LucideIcon;
   onClick?: VoidFunction;
   link?: string;
+  class?: string;
 }
 
 export function Button(props: Props) {
@@ -18,7 +19,7 @@ export function Button(props: Props) {
     <Tag
       href={props.link}
       onClick={props.onClick}
-      class={`px-3 py-2.5 flex gap-2 rounded-xl border text-sm items-center justify-center font-semibold ${props.strokeColor} ${props.textColor} ${props.fillColor}`}
+      class={`px-3 py-2.5 flex gap-2 rounded-xl border text-sm items-center justify-center font-semibold ${props.strokeColor} ${props.textColor} ${props.fillColor} ${props.class}`}
     >
       {props.Icon && <Icon Icon={props.Icon} size={17} />}
       {props.children}
