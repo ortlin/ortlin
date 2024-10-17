@@ -7,6 +7,8 @@ import { Button } from "./Button.tsx";
 import { KeyRound } from "lucide-preact";
 import Input, { type ChangeHandler } from "./Input.tsx";
 import { useSignal } from "@preact/signals";
+import apiKeyService from "../services/apiKeyService.ts";
+import apiKeyApi from "../apis/apiKeyApi.ts";
 
 export default function ModalApiKeyAdd() {
     const key = useSignal("");
@@ -21,8 +23,12 @@ export default function ModalApiKeyAdd() {
     const handleCancelClick = () => {
         toggleIsAddFormOpen();
     };
-    const handleAddClick = () => {
-        // TODO
+    const handleAddClick = async () => {
+        const data = { key: key.value };
+        const result = await apiKeyApi.encrypt(data);
+        if (!result) return;
+        apiKeyService.set(result.encryptedKey);
+        key.value = "";
         toggleIsAddFormOpen();
     };
     const handleInputChange: ChangeHandler = (name, value) => {
@@ -30,7 +36,7 @@ export default function ModalApiKeyAdd() {
     };
     return (isAddFormOpen.value || null) && (
         <div
-            class="absolute left-0 top-0 w-full h-full bg-slate-950 bg-opacity-30 z-50 flex justify-center items-center"
+            class="absolute left-0 top-0 w-full h-full bg-slate-950 bg-opacity-30 z-40 flex justify-center items-center"
             onMouseDown={handleOverlayMouseDown}
         >
             <div
