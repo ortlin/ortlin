@@ -23,7 +23,7 @@ interface Props {
 export default function FieldHelp(props: Props) {
   return props.helpers
     ? (
-      <div class="mt-1.5 text-xs text-slate-400 leading-[17px]">
+      <div class="mt-1.5 text-sm text-slate-400 leading-relaxed">
         {props.helpers.map((helper) => {
           switch (helper.type) {
             case "text":
