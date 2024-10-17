@@ -22,7 +22,7 @@ export default function Input(props: Props) {
     <div class="w-full">
       <FieldLabel text={props.label} required={props.required} />
       <input
-        type="text"
+        type={props.type}
         value={props.value}
         onChange={handleChange}
         class="text-slate-300 px-4 py-2 bg-transparent rounded-xl border border-slate-700 outline-none focus:border-lime-600 w-full"
