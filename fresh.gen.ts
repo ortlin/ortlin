@@ -9,6 +9,7 @@ import * as $api_api_keys_decrypt from "./routes/api/api-keys/decrypt.ts";
 import * as $api_api_keys_encrypt from "./routes/api/api-keys/encrypt.ts";
 import * as $greet_name_ from "./routes/greet/[name].tsx";
 import * as $index from "./routes/index.tsx";
+import * as $Alert from "./islands/Alert.tsx";
 import * as $ApiKeyManage from "./islands/ApiKeyManage.tsx";
 import * as $ButtonDonate from "./islands/ButtonDonate.tsx";
 import type { Manifest } from "$fresh/server.ts";
@@ -24,6 +25,7 @@ const manifest = {
     "./routes/index.tsx": $index,
   },
   islands: {
+    "./islands/Alert.tsx": $Alert,
     "./islands/ApiKeyManage.tsx": $ApiKeyManage,
     "./islands/ButtonDonate.tsx": $ButtonDonate,
   },
