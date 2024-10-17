@@ -3,6 +3,8 @@ import FieldLabel from "./FieldLabel.tsx";
 import FieldHelp from "./FieldHelp.tsx";
 import type { Helper } from "./FieldHelp.tsx";
 
+export type ChangeHandler = (name: string, value: string) => void;
+
 interface Props {
   name: string;
   type: "text" | "number";
@@ -10,7 +12,7 @@ interface Props {
   value: string;
   required: boolean;
   helpers?: Helper[];
-  onChange: (name: string, value: string) => void;
+  onChange: ChangeHandler;
 }
 
 export default function Input(props: Props) {
@@ -25,7 +27,7 @@ export default function Input(props: Props) {
         type="text"
         value={props.value}
         onChange={handleChange}
-        class="text-slate-300 px-4 py-2 bg-transparent rounded-xl border border-slate-700 outline-none focus:border-lime-600 w-full"
+        class="text-slate-300 px-4 py-2 bg-transparent rounded-xl border border-slate-700 outline-none focus:border-slate-600 w-full"
       />
       <FieldHelp
         helpers={props.helpers}
