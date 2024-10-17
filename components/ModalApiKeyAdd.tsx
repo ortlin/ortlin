@@ -5,8 +5,11 @@ import {
 import { JSX } from "preact";
 import { Button } from "./Button.tsx";
 import { KeyRound } from "lucide-preact";
+import Input, { type ChangeHandler } from "./Input.tsx";
+import { useSignal } from "@preact/signals";
 
-export default function ApiKeyAddModal() {
+export default function ModalApiKeyAdd() {
+    const key = useSignal("");
     const handleOverlayMouseDown = () => {
         toggleIsAddFormOpen();
     };
@@ -22,6 +25,9 @@ export default function ApiKeyAddModal() {
         // TODO
         toggleIsAddFormOpen();
     };
+    const handleInputChange: ChangeHandler = (name, value) => {
+        if (name === "key") key.value = value;
+    };
     return (isAddFormOpen.value || null) && (
         <div
             class="absolute left-0 top-0 w-full h-full bg-slate-950 bg-opacity-30 z-50 flex justify-center items-center"
@@ -34,11 +40,22 @@ export default function ApiKeyAddModal() {
                 <h3 class="text-lg text-slate-100 font-semibold mb-1">
                     Add OpenAI API key
                 </h3>
-                <p class="text-slate-300 text-base">
+                <p class="text-slate-300 text-base mb-4">
                     Your OpenAI API key will be encrypted and securely stored in
                     your browser.
                 </p>
-                <div class="mt-5 flex justify-end gap-4">
+                <div>
+                    <Input
+                        name="key"
+                        type="text"
+                        label="OpenAI API key"
+                        value={key.value}
+                        required={true}
+                        helpers={[]}
+                        onChange={handleInputChange}
+                    />
+                </div>
+                <div class="mt-4 flex justify-end gap-4">
                     <Button
                         strokeColor="border-slate-700"
                         textColor="text-slate-100"
