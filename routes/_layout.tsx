@@ -1,6 +1,7 @@
 import type { PageProps } from "$fresh/server.ts";
 import { Button } from "../components/Button.tsx";
-import { Github, Heart, KeyRound } from "lucide-preact";
+import { Github, Heart } from "lucide-preact";
+import ApiKeyManage from "../islands/ApiKeyManage.tsx";
 
 export default function Layout(props: PageProps) {
   return (
@@ -14,13 +15,7 @@ export default function Layout(props: PageProps) {
         <div class="flex-grow">
         </div>
         <div class="mb-6 mx-auto">
-          <Button
-            Icon={KeyRound}
-            strokeColor="border-slate-700"
-            textColor="text-slate-100"
-          >
-            Add OpenAI API key
-          </Button>
+          <ApiKeyManage />
         </div>
       </div>
       <div class="flex-grow bg-slate-800 border-l border-slate-700">
