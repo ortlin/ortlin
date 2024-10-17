@@ -9,6 +9,7 @@ import * as $api_joke from "./routes/api/joke.ts";
 import * as $greet_name_ from "./routes/greet/[name].tsx";
 import * as $index from "./routes/index.tsx";
 import * as $ApiKeyManage from "./islands/ApiKeyManage.tsx";
+import * as $ButtonDonate from "./islands/ButtonDonate.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -22,6 +23,7 @@ const manifest = {
   },
   islands: {
     "./islands/ApiKeyManage.tsx": $ApiKeyManage,
+    "./islands/ButtonDonate.tsx": $ButtonDonate,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
