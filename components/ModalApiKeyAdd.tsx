@@ -9,6 +9,7 @@ import Input, { type ChangeHandler } from "./Input.tsx";
 import { useSignal } from "@preact/signals";
 import apiKeyService from "../services/apiKeyService.ts";
 import apiKeyApi from "../apis/apiKeyApi.ts";
+import alertSignal from "../signals/alertSignal.ts";
 
 export default function ModalApiKeyAdd() {
     const key = useSignal("");
@@ -30,6 +31,9 @@ export default function ModalApiKeyAdd() {
         apiKeyService.set(result.encryptedKey);
         key.value = "";
         toggleIsAddFormOpen();
+        alertSignal.replaceMessage(
+            "Your OpenAI API key is encrypted and securely added",
+        );
     };
     const handleInputChange: ChangeHandler = (name, value) => {
         if (name === "key") key.value = value;
