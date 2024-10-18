@@ -10,7 +10,8 @@ import * as $api_api_keys_encrypt from "./routes/api/api-keys/encrypt.ts";
 import * as $audio_create_speech from "./routes/audio/create-speech.tsx";
 import * as $audio_create_transcription from "./routes/audio/create-transcription.tsx";
 import * as $index from "./routes/index.tsx";
-import * as $ApiKeyManage from "./islands/ApiKeyManage.tsx";
+import * as $Alert from "./islands/Alert.tsx";
+import * as $ApiKeyConfigure from "./islands/ApiKeyConfigure.tsx";
 import * as $ButtonDonate from "./islands/ButtonDonate.tsx";
 import * as $CreateTranscriptionForm from "./islands/CreateTranscriptionForm.tsx";
 import * as $File from "./islands/File.tsx";
@@ -28,7 +29,8 @@ const manifest = {
     "./routes/index.tsx": $index,
   },
   islands: {
-    "./islands/ApiKeyManage.tsx": $ApiKeyManage,
+    "./islands/Alert.tsx": $Alert,
+    "./islands/ApiKeyConfigure.tsx": $ApiKeyConfigure,
     "./islands/ButtonDonate.tsx": $ButtonDonate,
     "./islands/CreateTranscriptionForm.tsx": $CreateTranscriptionForm,
     "./islands/File.tsx": $File,

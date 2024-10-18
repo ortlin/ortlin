@@ -33,7 +33,7 @@ export default function Select(props: Props) {
           type="text"
           value={props.value}
           onChange={handleChange}
-          class="text-slate-300 px-4 py-2 bg-transparent rounded-xl border border-slate-700 outline-none focus:border-lime-600 w-full appearance-none"
+          class="text-slate-300 px-4 py-2 bg-transparent rounded-xl border border-slate-700 outline-none focus:border-slate-600 w-full appearance-none"
         >
           {props.options.map((option) => (
             <option value={option.value}>{option.title}</option>

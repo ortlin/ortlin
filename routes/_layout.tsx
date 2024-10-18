@@ -2,8 +2,9 @@ import type { PageProps } from "$fresh/server.ts";
 import { Button } from "../components/Button.tsx";
 import { Github } from "lucide-preact";
 import Menu from "../components/Menu.tsx";
-import ApiKeyManage from "../islands/ApiKeyManage.tsx";
+import ApiKeyConfigure from "../islands/ApiKeyConfigure.tsx";
 import ButtonDonate from "../islands/ButtonDonate.tsx";
+import Alert from "../islands/Alert.tsx";
 
 export default function Layout(props: PageProps) {
   const pathName = new URL(props.url).pathname;
@@ -21,7 +22,7 @@ export default function Layout(props: PageProps) {
           <Menu pathName={pathName} />
         </div>
         <div class="my-6 mx-auto">
-          <ApiKeyManage />
+          <ApiKeyConfigure />
         </div>
       </div>
       <div class="flex-grow flex flex-col bg-slate-800 border-l border-slate-700">
@@ -39,6 +40,7 @@ export default function Layout(props: PageProps) {
         <div class="flex-grow p-6 overflow-y-auto">
           <props.Component />
         </div>
+        <Alert />
       </div>
     </div>
   );

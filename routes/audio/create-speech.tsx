@@ -27,6 +27,7 @@ export default function Greet() {
     <PageWrapper
       heading="Create Speech"
       description="Generates audio from the input text."
+      docUrl="https://platform.openai.com/docs/api-reference/audio/createSpeech"
     >
       <Select
         value={model.value}
@@ -137,7 +138,7 @@ export default function Greet() {
         fillColor="bg-slate-100"
         onClick={handleCreateClick}
       >
-        Create Speech
+        Create speech
       </Button>
     </PageWrapper>
   );
