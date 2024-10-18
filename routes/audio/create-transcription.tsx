@@ -6,6 +6,7 @@ export default function CreateTranscription() {
     <PageWrapper
       heading="Create transcription"
       description="Transcribes audio into the input language."
+      docUrl="https://platform.openai.com/docs/api-reference/audio/createTranscription"
     >
       <CreateTranscriptionForm />
     </PageWrapper>
