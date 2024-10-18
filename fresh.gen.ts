@@ -8,9 +8,12 @@ import * as $_layout from "./routes/_layout.tsx";
 import * as $api_api_keys_decrypt from "./routes/api/api-keys/decrypt.ts";
 import * as $api_api_keys_encrypt from "./routes/api/api-keys/encrypt.ts";
 import * as $audio_create_speech from "./routes/audio/create-speech.tsx";
+import * as $audio_create_transcription from "./routes/audio/create-transcription.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $ApiKeyManage from "./islands/ApiKeyManage.tsx";
 import * as $ButtonDonate from "./islands/ButtonDonate.tsx";
+import * as $CreateTranscriptionForm from "./islands/CreateTranscriptionForm.tsx";
+import * as $File from "./islands/File.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -21,11 +24,14 @@ const manifest = {
     "./routes/api/api-keys/decrypt.ts": $api_api_keys_decrypt,
     "./routes/api/api-keys/encrypt.ts": $api_api_keys_encrypt,
     "./routes/audio/create-speech.tsx": $audio_create_speech,
+    "./routes/audio/create-transcription.tsx": $audio_create_transcription,
     "./routes/index.tsx": $index,
   },
   islands: {
     "./islands/ApiKeyManage.tsx": $ApiKeyManage,
     "./islands/ButtonDonate.tsx": $ButtonDonate,
+    "./islands/CreateTranscriptionForm.tsx": $CreateTranscriptionForm,
+    "./islands/File.tsx": $File,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
