@@ -36,7 +36,7 @@ export default function File(props: Props) {
     <div class="w-full">
       <FieldLabel text={props.label} required={props.required} />
       <div
-        class="relative flex text-slate-300 px-4 py-2 rounded-xl border border-slate-700 focus:border-slate-600 w-full"
+        class="relative flex text-slate-300 px-4 py-2 rounded-xl border border-slate-700 focus:border-slate-600 w-full cursor-pointer"
         onClick={handleInputWrapperClick}
       >
         <input
