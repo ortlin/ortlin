@@ -21,6 +21,7 @@ import * as $CreateModerationForm from "./islands/CreateModerationForm.tsx";
 import * as $CreateTranscriptionForm from "./islands/CreateTranscriptionForm.tsx";
 import * as $CreateTranslationForm from "./islands/CreateTranslationForm.tsx";
 import * as $File from "./islands/File.tsx";
+import * as $FormCreateSpeech from "./islands/FormCreateSpeech.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -47,6 +48,7 @@ const manifest = {
     "./islands/CreateTranscriptionForm.tsx": $CreateTranscriptionForm,
     "./islands/CreateTranslationForm.tsx": $CreateTranslationForm,
     "./islands/File.tsx": $File,
+    "./islands/FormCreateSpeech.tsx": $FormCreateSpeech,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
