@@ -12,6 +12,7 @@ import * as $index from "./routes/index.tsx";
 import * as $Alert from "./islands/Alert.tsx";
 import * as $ApiKeyConfigure from "./islands/ApiKeyConfigure.tsx";
 import * as $ButtonDonate from "./islands/ButtonDonate.tsx";
+import * as $FormCreateSpeech from "./islands/FormCreateSpeech.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -28,6 +29,7 @@ const manifest = {
     "./islands/Alert.tsx": $Alert,
     "./islands/ApiKeyConfigure.tsx": $ApiKeyConfigure,
     "./islands/ButtonDonate.tsx": $ButtonDonate,
+    "./islands/FormCreateSpeech.tsx": $FormCreateSpeech,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
