@@ -1,11 +1,11 @@
 import { Button } from "../components/Button.tsx";
 import { KeyRound } from "lucide-preact";
-import ModalApiKeyAdd from "../components/ModalApiKeyAdd.tsx";
-import { toggleIsAddFormOpen } from "../signals/apiKeyManageSignal.ts";
+import ModalApiKeyConfigure from "../components/ModalApiKeyConfigure.tsx";
+import apiKeyManageSignal from "../signals/apiKeyManageSignal.ts";
 
-export default function ApiKeyManage() {
+export default function ApiKeyConfigure() {
     const handleAddClick = () => {
-        toggleIsAddFormOpen();
+        apiKeyManageSignal.toggleModalVisibility();
     };
     return (
         <div>
@@ -15,9 +15,9 @@ export default function ApiKeyManage() {
                 textColor="text-slate-100"
                 onClick={handleAddClick}
             >
-                Add OpenAI API key
+                Configure OpenAI API key
             </Button>
-            <ModalApiKeyAdd />
+            <ModalApiKeyConfigure />
         </div>
     );
 }

@@ -10,7 +10,7 @@ import * as $api_api_keys_encrypt from "./routes/api/api-keys/encrypt.ts";
 import * as $audio_create_speech from "./routes/audio/create-speech.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $Alert from "./islands/Alert.tsx";
-import * as $ApiKeyManage from "./islands/ApiKeyManage.tsx";
+import * as $ApiKeyConfigure from "./islands/ApiKeyConfigure.tsx";
 import * as $ButtonDonate from "./islands/ButtonDonate.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
@@ -26,7 +26,7 @@ const manifest = {
   },
   islands: {
     "./islands/Alert.tsx": $Alert,
-    "./islands/ApiKeyManage.tsx": $ApiKeyManage,
+    "./islands/ApiKeyConfigure.tsx": $ApiKeyConfigure,
     "./islands/ButtonDonate.tsx": $ButtonDonate,
   },
   baseUrl: import.meta.url,

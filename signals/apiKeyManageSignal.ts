@@ -1,7 +1,11 @@
 import { signal } from "@preact/signals";
 
-export const isAddFormOpen = signal(false);
+const apiKeyManageSignal = {
+    isModalVisible: signal(false),
 
-export const toggleIsAddFormOpen = () => {
-    isAddFormOpen.value = !isAddFormOpen.value;
+    toggleModalVisibility() {
+        this.isModalVisible.value = !this.isModalVisible.value;
+    },
 };
+
+export default apiKeyManageSignal;

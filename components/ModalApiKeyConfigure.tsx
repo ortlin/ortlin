@@ -1,7 +1,4 @@
-import {
-    isAddFormOpen,
-    toggleIsAddFormOpen,
-} from "../signals/apiKeyManageSignal.ts";
+import apiKeyManageSignal from "../signals/apiKeyManageSignal.ts";
 import { JSX } from "preact";
 import { Button } from "./Button.tsx";
 import { KeyRound } from "lucide-preact";
@@ -11,10 +8,10 @@ import apiKeyService from "../services/apiKeyService.ts";
 import apiKeyApi from "../apis/apiKeyApi.ts";
 import alertSignal from "../signals/alertSignal.ts";
 
-export default function ModalApiKeyAdd() {
+export default function ModalApiKeyConfigure() {
     const key = useSignal("");
     const handleOverlayMouseDown = () => {
-        toggleIsAddFormOpen();
+        apiKeyManageSignal.toggleModalVisibility();
     };
     const handleCardMouseDown: JSX.MouseEventHandler<HTMLDivElement> = (
         event,
@@ -22,23 +19,23 @@ export default function ModalApiKeyAdd() {
         event.stopPropagation();
     };
     const handleCancelClick = () => {
-        toggleIsAddFormOpen();
+        apiKeyManageSignal.toggleModalVisibility();
     };
-    const handleAddClick = async () => {
+    const handleConfigureClick = async () => {
         const data = { key: key.value };
         const result = await apiKeyApi.encrypt(data);
         if (!result) return;
         apiKeyService.set(result.encryptedKey);
         key.value = "";
-        toggleIsAddFormOpen();
+        apiKeyManageSignal.toggleModalVisibility();
         alertSignal.replaceMessage(
-            "Your OpenAI API key is encrypted and securely added",
+            "Your OpenAI API key is encrypted and securely configured",
         );
     };
     const handleInputChange: ChangeHandler = (name, value) => {
         if (name === "key") key.value = value;
     };
-    return (isAddFormOpen.value || null) && (
+    return (apiKeyManageSignal.isModalVisible.value || null) && (
         <div
             class="absolute left-0 top-0 w-full h-full bg-slate-950 bg-opacity-30 z-40 flex justify-center items-center"
             onMouseDown={handleOverlayMouseDown}
@@ -48,7 +45,7 @@ export default function ModalApiKeyAdd() {
                 onMouseDown={handleCardMouseDown}
             >
                 <h3 class="text-lg text-slate-100 font-semibold mb-1">
-                    Add OpenAI API key
+                    Configure OpenAI API key
                 </h3>
                 <p class="text-slate-300 text-base mb-4">
                     Your OpenAI API key will be encrypted and securely stored in
@@ -78,9 +75,9 @@ export default function ModalApiKeyAdd() {
                         textColor="text-slate-900"
                         fillColor="bg-slate-100"
                         Icon={KeyRound}
-                        onClick={handleAddClick}
+                        onClick={handleConfigureClick}
                     >
-                        Add OpenAI API key
+                        Configure OpenAI API key
                     </Button>
                 </div>
             </div>
