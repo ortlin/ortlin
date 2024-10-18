@@ -15,11 +15,11 @@ export default function Alert() {
     }, [alertSignal.message.value]);
     return (alertSignal.isVisible.value || null) && (
         <div
-            class="text-slate-300 bg-slate-900 border border-slate-700 rounded-3xl p-5 w-96 mx-auto absolute inset-x-0 bottom-10 flex gap-3 items-center cursor-pointer z-50"
+            class="text-slate-300 bg-slate-900 border border-slate-700 rounded-3xl p-5 mx-auto absolute inset-x-0 bottom-10 flex gap-3 items-center cursor-pointer z-50 w-[600px]"
             onClick={handleClick}
         >
             <Icon Icon={Info} size={24} />
-            <span>{alertSignal.message}</span>
+            <span class="break-all">{alertSignal.message}</span>
         </div>
     );
 }
