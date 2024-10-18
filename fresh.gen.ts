@@ -11,9 +11,11 @@ import * as $audio_create_speech from "./routes/audio/create-speech.tsx";
 import * as $audio_create_transcription from "./routes/audio/create-transcription.tsx";
 import * as $audio_create_translation from "./routes/audio/create-translation.tsx";
 import * as $index from "./routes/index.tsx";
+import * as $moderations_create_moderation from "./routes/moderations/create-moderation.tsx";
 import * as $Alert from "./islands/Alert.tsx";
 import * as $ApiKeyConfigure from "./islands/ApiKeyConfigure.tsx";
 import * as $ButtonDonate from "./islands/ButtonDonate.tsx";
+import * as $CreateModerationForm from "./islands/CreateModerationForm.tsx";
 import * as $CreateTranscriptionForm from "./islands/CreateTranscriptionForm.tsx";
 import * as $CreateTranslationForm from "./islands/CreateTranslationForm.tsx";
 import * as $File from "./islands/File.tsx";
@@ -30,11 +32,14 @@ const manifest = {
     "./routes/audio/create-transcription.tsx": $audio_create_transcription,
     "./routes/audio/create-translation.tsx": $audio_create_translation,
     "./routes/index.tsx": $index,
+    "./routes/moderations/create-moderation.tsx":
+      $moderations_create_moderation,
   },
   islands: {
     "./islands/Alert.tsx": $Alert,
     "./islands/ApiKeyConfigure.tsx": $ApiKeyConfigure,
     "./islands/ButtonDonate.tsx": $ButtonDonate,
+    "./islands/CreateModerationForm.tsx": $CreateModerationForm,
     "./islands/CreateTranscriptionForm.tsx": $CreateTranscriptionForm,
     "./islands/CreateTranslationForm.tsx": $CreateTranslationForm,
     "./islands/File.tsx": $File,
