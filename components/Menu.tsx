@@ -38,8 +38,8 @@ const categories: Category[] = [
         slug: "/audio/create-transcription",
       },
       {
-        heading: "Create translate",
-        slug: "/audio/create-translate",
+        heading: "Create translation",
+        slug: "/audio/create-translation",
       },
     ],
   },
