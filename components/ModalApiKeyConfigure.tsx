@@ -73,15 +73,17 @@ export default function ModalApiKeyConfigure() {
                     Your OpenAI API key will be encrypted and securely stored in
                     your browser.
                 </p>
-                <div class="text-slate-100 text-base mb-5 flex items-center gap-2">
-                    <Icon Icon={CircleCheck} size={19} />
-                    <p>
-                        Configured API key:
-                        <span class="bg-slate-700 rounded px-1 py-0.5 ml-2 text-slate-400">
-                            {maskedExistingKey.value}
-                        </span>
-                    </p>
-                </div>
+                {existingKey.value && (
+                    <div class="text-slate-100 text-base mb-5 flex items-center gap-2">
+                        <Icon Icon={CircleCheck} size={19} />
+                        <p>
+                            Configured API key:
+                            <span class="bg-slate-700 rounded px-1 py-0.5 ml-2 text-slate-400">
+                                {maskedExistingKey.value}
+                            </span>
+                        </p>
+                    </div>
+                )}
                 <div>
                     <Input
                         name="key"
