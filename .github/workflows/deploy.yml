@@ -29,6 +29,6 @@ jobs:
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "numfray"
-          entrypoint: "main.tsx"
+          project: "renjith-numfray-59"
+          entrypoint: "main.ts"
           root: "."
