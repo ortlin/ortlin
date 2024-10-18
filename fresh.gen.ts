@@ -9,11 +9,13 @@ import * as $api_api_keys_decrypt from "./routes/api/api-keys/decrypt.ts";
 import * as $api_api_keys_encrypt from "./routes/api/api-keys/encrypt.ts";
 import * as $audio_create_speech from "./routes/audio/create-speech.tsx";
 import * as $audio_create_transcription from "./routes/audio/create-transcription.tsx";
+import * as $audio_create_translation from "./routes/audio/create-translation.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $Alert from "./islands/Alert.tsx";
 import * as $ApiKeyConfigure from "./islands/ApiKeyConfigure.tsx";
 import * as $ButtonDonate from "./islands/ButtonDonate.tsx";
 import * as $CreateTranscriptionForm from "./islands/CreateTranscriptionForm.tsx";
+import * as $CreateTranslationForm from "./islands/CreateTranslationForm.tsx";
 import * as $File from "./islands/File.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
@@ -26,6 +28,7 @@ const manifest = {
     "./routes/api/api-keys/encrypt.ts": $api_api_keys_encrypt,
     "./routes/audio/create-speech.tsx": $audio_create_speech,
     "./routes/audio/create-transcription.tsx": $audio_create_transcription,
+    "./routes/audio/create-translation.tsx": $audio_create_translation,
     "./routes/index.tsx": $index,
   },
   islands: {
@@ -33,6 +36,7 @@ const manifest = {
     "./islands/ApiKeyConfigure.tsx": $ApiKeyConfigure,
     "./islands/ButtonDonate.tsx": $ButtonDonate,
     "./islands/CreateTranscriptionForm.tsx": $CreateTranscriptionForm,
+    "./islands/CreateTranslationForm.tsx": $CreateTranslationForm,
     "./islands/File.tsx": $File,
   },
   baseUrl: import.meta.url,
