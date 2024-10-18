@@ -4,6 +4,10 @@ const apiKeyService = {
     set(key: string) {
         localStorage.setItem(this.key, key);
     },
+
+    get() {
+        return localStorage.getItem(this.key);
+    },
 };
 
 export default apiKeyService;
