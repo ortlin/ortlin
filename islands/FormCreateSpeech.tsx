@@ -13,6 +13,7 @@ export default function FormCreateSpeech() {
     const voice = useSignal("");
     const speed = useSignal("1");
     const audio = useSignal("");
+    const isProcessing = useSignal(false);
 
     const handleChange = (name: string, value: string) => {
         if (name === "model") model.value = value;
@@ -22,6 +23,7 @@ export default function FormCreateSpeech() {
     };
 
     const handleCreateClick = async () => {
+        isProcessing.value = true;
         audio.value = "";
         const result = await openaiApi.createSpeech({
             model: model.value,
@@ -29,6 +31,7 @@ export default function FormCreateSpeech() {
             voice: voice.value,
             speed: Number(speed.value),
         });
+        isProcessing.value = false;
         if (!result) return;
         audio.value = result;
     };
@@ -152,6 +155,7 @@ export default function FormCreateSpeech() {
                     textColor="text-slate-900"
                     fillColor="bg-slate-100"
                     onClick={handleCreateClick}
+                    isProcessing={isProcessing.value}
                 >
                     Create speech
                 </Button>
