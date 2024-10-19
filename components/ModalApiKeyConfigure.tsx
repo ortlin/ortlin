@@ -6,7 +6,6 @@ import { CircleCheck, KeyRound } from "lucide-preact";
 import Input, { type ChangeHandler } from "./Input.tsx";
 import { computed, useSignal } from "@preact/signals";
 import apiKeyService from "../services/apiKeyService.ts";
-import apiKeyApi from "../apis/apiKeyApi.ts";
 import alertSignal from "../signals/alertSignal.ts";
 import Icon from "./Icon.tsx";
 
@@ -32,10 +31,8 @@ export default function ModalApiKeyConfigure() {
         apiKeyManageSignal.toggleModalVisibility();
     };
     const handleConfigureClick = async () => {
-        const data = { key: key.value };
-        const result = await apiKeyApi.encrypt(data);
-        if (!result) return;
-        apiKeyService.set(result.encryptedKey);
+        const saved = await apiKeyService.set(key.value);
+        if (!saved) return;
         key.value = "";
         apiKeyManageSignal.toggleModalVisibility();
         alertSignal.replaceMessage(
@@ -46,11 +43,8 @@ export default function ModalApiKeyConfigure() {
         if (name === "key") key.value = value;
     };
     const readExistingKey = async () => {
-        const encryptedKey = apiKeyService.get();
-        if (!encryptedKey) return;
-        const result = await apiKeyApi.decrypt({ encryptedKey });
-        if (!result) return;
-        existingKey.value = result.key;
+        const key = await apiKeyService.get();
+        existingKey.value = key;
     };
     useEffect(() => {
         if (apiKeyManageSignal.isModalVisible.value) {
