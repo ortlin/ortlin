@@ -3,6 +3,8 @@ import alertSignal from "../signals/alertSignal.ts";
 import Icon from "../components/Icon.tsx";
 import { Info } from "lucide-preact";
 
+const timeout = 1000 * 10;
+
 export default function Alert() {
     const handleClick = () => {
         alertSignal.clearMessage();
@@ -10,7 +12,7 @@ export default function Alert() {
     useEffect(() => {
         const intervalId = setTimeout(() => {
             alertSignal.clearMessage();
-        }, 5000);
+        }, timeout);
         return () => clearInterval(intervalId);
     }, [alertSignal.message.value]);
     return (alertSignal.isVisible.value || null) && (

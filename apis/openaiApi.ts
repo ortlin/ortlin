@@ -37,7 +37,10 @@ const openaiApi = {
         });
         if (!response.ok) {
             const result = await response.json();
-            alertSignal.replaceMessage(result.error.message);
+            const message = result.error
+                ? result.error.message
+                : "Unable to process your request. Please retry.";
+            alertSignal.replaceMessage(message);
             return;
         }
         buttonDonateSignal.highlight();
