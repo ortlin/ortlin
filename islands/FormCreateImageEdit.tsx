@@ -6,6 +6,7 @@ import { Button } from "../components/Button.tsx";
 import Form from "../components/Form.tsx";
 import File from "./File.tsx";
 import Textarea from "../components/Textarea.tsx";
+import ResultImage from "../components/ResultImage.tsx";
 
 export default function FormCreateImageEdit() {
     const image = useSignal<File | null>(null);
@@ -14,6 +15,7 @@ export default function FormCreateImageEdit() {
     const model = useSignal("dall-e-2");
     const size = useSignal("1024x1024");
     const user = useSignal("");
+    const updatedImage = useSignal("");
 
     const handleChange = (name: string, value: string) => {
         if (name === "prompt") prompt.value = value;
@@ -33,7 +35,7 @@ export default function FormCreateImageEdit() {
 
     return (
         <Form
-            result={null}
+            result={<ResultImage image={updatedImage.value} />}
         >
             <div class="grid gap-4">
                 <File

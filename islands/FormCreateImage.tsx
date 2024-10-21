@@ -5,6 +5,7 @@ import Textarea from "../components/Textarea.tsx";
 import { WandSparkles } from "lucide-preact";
 import { useSignal } from "@preact/signals";
 import Form from "../components/Form.tsx";
+import ResultImage from "../components/ResultImage.tsx";
 
 export default function FormCreateImage() {
   const prompt = useSignal("");
@@ -13,6 +14,7 @@ export default function FormCreateImage() {
   const size = useSignal("1024x1024");
   const style = useSignal("vivid");
   const user = useSignal("");
+  const image = useSignal("");
 
   const sizeOptions: Record<string, Option[]> = {
     "dall-e-2": [
@@ -60,7 +62,7 @@ export default function FormCreateImage() {
 
   return (
     <Form
-      result={null}
+      result={<ResultImage image={image.value} />}
     >
       <div class="grid gap-4">
         <Textarea

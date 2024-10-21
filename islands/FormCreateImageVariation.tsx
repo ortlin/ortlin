@@ -5,12 +5,14 @@ import { WandSparkles } from "lucide-preact";
 import { Button } from "../components/Button.tsx";
 import Form from "../components/Form.tsx";
 import File from "./File.tsx";
+import ResultImage from "../components/ResultImage.tsx";
 
 export default function FormCreateImageVariation() {
     const image = useSignal<File | null>(null);
     const model = useSignal("dall-e-2");
     const size = useSignal("1024x1024");
     const user = useSignal("");
+    const updatedImage = useSignal("");
 
     const handleChange = (name: string, value: string) => {
         if (name === "model") model.value = value;
@@ -28,7 +30,7 @@ export default function FormCreateImageVariation() {
 
     return (
         <Form
-            result={null}
+            result={<ResultImage image={updatedImage.value} />}
         >
             <div class="grid gap-4">
                 <File
