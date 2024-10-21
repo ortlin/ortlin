@@ -19,15 +19,15 @@ import * as $moderations_create_moderation from "./routes/moderations/create-mod
 import * as $Alert from "./islands/Alert.tsx";
 import * as $ApiKeyConfigure from "./islands/ApiKeyConfigure.tsx";
 import * as $ButtonDonate from "./islands/ButtonDonate.tsx";
-import * as $CreateImageForm from "./islands/CreateImageForm.tsx";
-import * as $CreateModerationForm from "./islands/CreateModerationForm.tsx";
-import * as $CreateTranscriptionForm from "./islands/CreateTranscriptionForm.tsx";
-import * as $CreateTranslationForm from "./islands/CreateTranslationForm.tsx";
 import * as $File from "./islands/File.tsx";
 import * as $FormCreateChatCompletion from "./islands/FormCreateChatCompletion.tsx";
+import * as $FormCreateImage from "./islands/FormCreateImage.tsx";
 import * as $FormCreateImageEdit from "./islands/FormCreateImageEdit.tsx";
 import * as $FormCreateImageVariation from "./islands/FormCreateImageVariation.tsx";
+import * as $FormCreateModeration from "./islands/FormCreateModeration.tsx";
 import * as $FormCreateSpeech from "./islands/FormCreateSpeech.tsx";
+import * as $FormCreateTranscription from "./islands/FormCreateTranscription.tsx";
+import * as $FormCreateTranslation from "./islands/FormCreateTranslation.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -53,15 +53,15 @@ const manifest = {
     "./islands/Alert.tsx": $Alert,
     "./islands/ApiKeyConfigure.tsx": $ApiKeyConfigure,
     "./islands/ButtonDonate.tsx": $ButtonDonate,
-    "./islands/CreateImageForm.tsx": $CreateImageForm,
-    "./islands/CreateModerationForm.tsx": $CreateModerationForm,
-    "./islands/CreateTranscriptionForm.tsx": $CreateTranscriptionForm,
-    "./islands/CreateTranslationForm.tsx": $CreateTranslationForm,
     "./islands/File.tsx": $File,
     "./islands/FormCreateChatCompletion.tsx": $FormCreateChatCompletion,
+    "./islands/FormCreateImage.tsx": $FormCreateImage,
     "./islands/FormCreateImageEdit.tsx": $FormCreateImageEdit,
     "./islands/FormCreateImageVariation.tsx": $FormCreateImageVariation,
+    "./islands/FormCreateModeration.tsx": $FormCreateModeration,
     "./islands/FormCreateSpeech.tsx": $FormCreateSpeech,
+    "./islands/FormCreateTranscription.tsx": $FormCreateTranscription,
+    "./islands/FormCreateTranslation.tsx": $FormCreateTranslation,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

@@ -1,5 +1,5 @@
 import PageWrapper from "../../components/PageWrapper.tsx";
-import CreateImageForm from "../../islands/CreateImageForm.tsx";
+import FormCreateImage from "../../islands/FormCreateImage.tsx";
 
 export default function CreateImage() {
   return (
@@ -8,7 +8,7 @@ export default function CreateImage() {
       description="Creates an image given a prompt."
       docUrl="https://platform.openai.com/docs/api-reference/images/create"
     >
-      <CreateImageForm />
+      <FormCreateImage />
     </PageWrapper>
   );
 }
