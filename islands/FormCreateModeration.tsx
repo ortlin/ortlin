@@ -31,13 +31,8 @@ export default function FormCreateModeration() {
           helpers={[{
             type: "text",
             content:
-              "Input (or inputs) to classify. Can be a single string, an array of strings, or an array of multi-modal input objects similar to other models. ",
-          }, {
-            type: "anchor",
-            content: "prompt",
-            link:
-              "https://platform.openai.com/docs/guides/speech-to-text/prompting",
-          }, { type: "text", content: " should be in English." }]}
+              "Input (or inputs) to classify. Can be a single string, an array of strings, or an array of multi-modal input objects similar to other models.",
+          }]}
           onChange={handleChange}
         />
         <Select
