@@ -3,56 +3,37 @@ import bufferService from "../services/bufferService.ts";
 import alertSignal from "../signals/alertSignal.ts";
 import apiKeyManageSignal from "../signals/apiKeyManageSignal.ts";
 import buttonDonateSignal from "../signals/buttonDonateSignal.ts";
-import apiKeyApi from "./apiKeyApi.ts";
-
-interface CreateSpeechRequest {
-    model: string;
-    input: string;
-    voice: string;
-    speed: number;
-}
+import OpenAI from "openai";
 
 const openaiApi = {
-    async client(
-        method: string,
-        url: string,
-        body?: unknown,
-        headers?: HeadersInit,
-    ) {
-        const encryptedKey = apiKeyService.get();
-        if (!encryptedKey) {
+    async client() {
+        const apiKey = await apiKeyService.get();
+        if (!apiKey) {
             alertSignal.replaceMessage("Please configure OpenAI API key");
             apiKeyManageSignal.toggleModalVisibility();
             return;
         }
-        const result = await apiKeyApi.decrypt({ encryptedKey });
-        if (!result) return;
-        const response = await fetch(url, {
-            method,
-            headers: {
-                "Authorization": `Bearer ${result.key}`,
-                ...headers,
-            },
-            body: JSON.stringify(body),
-        });
-        if (!response.ok) {
-            const result = await response.json();
-            const message = result.error
-                ? result.error.message
-                : "Unable to process your request. Please retry.";
-            alertSignal.replaceMessage(message);
-            return;
-        }
-        buttonDonateSignal.highlight();
-        return response;
+        return new OpenAI({ apiKey, dangerouslyAllowBrowser: true });
     },
 
-    async createSpeech(body: CreateSpeechRequest) {
-        const url = "https://api.openai.com/v1/audio/speech";
-        const headers = {
-            "Content-Type": "application/json",
-        };
-        const response = await this.client("POST", url, body, headers);
+    async execute(request: () => Promise<Response>) {
+        try {
+            const response = await request();
+            buttonDonateSignal.highlight();
+            return response;
+        } catch (error) {
+            if (error instanceof OpenAI.APIError) {
+                alertSignal.replaceMessage(error.message);
+                return;
+            }
+        }
+    },
+
+    async createSpeech(body: OpenAI.Audio.SpeechCreateParams) {
+        const client = await this.client();
+        if (!client) return;
+        const request = () => client.audio.speech.create(body);
+        const response = await this.execute(request);
         if (!response) return;
         const audio = await response.arrayBuffer();
         return bufferService.toDataUri(audio, "audio/mpeg");
