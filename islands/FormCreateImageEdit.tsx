@@ -4,7 +4,7 @@ import Select from "../components/Select.tsx";
 import { WandSparkles } from "lucide-preact";
 import { Button } from "../components/Button.tsx";
 import Form from "../components/Form.tsx";
-import File from "./File.tsx";
+import File from "../components/File.tsx";
 import Textarea from "../components/Textarea.tsx";
 import ResultImage from "../components/ResultImage.tsx";
 import FieldMaskImage from "../components/FieldMaskImage.tsx";

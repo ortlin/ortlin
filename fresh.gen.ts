@@ -19,7 +19,6 @@ import * as $moderations_create_moderation from "./routes/moderations/create-mod
 import * as $Alert from "./islands/Alert.tsx";
 import * as $ApiKeyConfigure from "./islands/ApiKeyConfigure.tsx";
 import * as $ButtonDonate from "./islands/ButtonDonate.tsx";
-import * as $File from "./islands/File.tsx";
 import * as $FormCreateChatCompletion from "./islands/FormCreateChatCompletion.tsx";
 import * as $FormCreateImage from "./islands/FormCreateImage.tsx";
 import * as $FormCreateImageEdit from "./islands/FormCreateImageEdit.tsx";
@@ -53,7 +52,6 @@ const manifest = {
     "./islands/Alert.tsx": $Alert,
     "./islands/ApiKeyConfigure.tsx": $ApiKeyConfigure,
     "./islands/ButtonDonate.tsx": $ButtonDonate,
-    "./islands/File.tsx": $File,
     "./islands/FormCreateChatCompletion.tsx": $FormCreateChatCompletion,
     "./islands/FormCreateImage.tsx": $FormCreateImage,
     "./islands/FormCreateImageEdit.tsx": $FormCreateImageEdit,

@@ -46,12 +46,14 @@ export default function File(props: Props) {
           onChange={handleChange}
           class="invisible w-0 h-0 outline-none"
         />
-        <div>{filename.value || "Choose file"}</div>
-        <Icon
-          Icon={FileIcon}
-          size={24}
-          class="text-slate-700 absolute top-2.5 right-2"
-        />
+        <div class="flex justify-between items-center">
+          <div>{filename.value || "Choose file"}</div>
+          <Icon
+            Icon={FileIcon}
+            size={19}
+            class="text-slate-700 absolute top-2.5 right-2"
+          />
+        </div>
       </div>
       <FieldHelp
         helpers={props.helpers}
