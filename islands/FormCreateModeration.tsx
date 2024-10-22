@@ -4,10 +4,12 @@ import Textarea from "../components/Textarea.tsx";
 import { WandSparkles } from "lucide-preact";
 import { useSignal } from "@preact/signals";
 import Form from "../components/Form.tsx";
+import ResultText from "../components/ResultText.tsx";
 
 export default function FormCreateModeration() {
   const input = useSignal("");
   const model = useSignal("omni-moderation-latest");
+  const result = useSignal("");
 
   const handleChange = (name: string, value: string) => {
     if (name === "input") input.value = value;
@@ -20,7 +22,7 @@ export default function FormCreateModeration() {
 
   return (
     <Form
-      result={null}
+      result={<ResultText text={result.value} />}
     >
       <div class="grid gap-4">
         <Textarea
