@@ -6,6 +6,7 @@ import { WandSparkles } from "lucide-preact";
 import { Button } from "../components/Button.tsx";
 import openaiApi from "../apis/openaiApi.ts";
 import Form from "../components/Form.tsx";
+import ResultAudio from "../components/ResultAudio.tsx";
 
 export default function FormCreateSpeech() {
     const model = useSignal("");
@@ -38,11 +39,7 @@ export default function FormCreateSpeech() {
 
     return (
         <Form
-            result={audio.value && (
-                <audio controls>
-                    <source src={audio.value} type="audio/mpeg" />
-                </audio>
-            )}
+            result={<ResultAudio audio={audio.value} />}
         >
             <div class="grid gap-4">
                 <Select

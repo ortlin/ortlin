@@ -1,5 +1,5 @@
 import PageWrapper from "../../components/PageWrapper.tsx";
-import CreateTranscriptionForm from "../../islands/CreateTranscriptionForm.tsx";
+import FormCreateTranscription from "../../islands/FormCreateTranscription.tsx";
 
 export default function CreateTranscription() {
   return (
@@ -8,7 +8,7 @@ export default function CreateTranscription() {
       description="Transcribes audio into the input language."
       docUrl="https://platform.openai.com/docs/api-reference/audio/createTranscription"
     >
-      <CreateTranscriptionForm />
+      <FormCreateTranscription />
     </PageWrapper>
   );
 }

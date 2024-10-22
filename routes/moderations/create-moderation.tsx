@@ -1,5 +1,5 @@
 import PageWrapper from "../../components/PageWrapper.tsx";
-import CreateModerationForm from "../../islands/CreateModerationForm.tsx";
+import FormCreateModeration from "../../islands/FormCreateModeration.tsx";
 
 export default function CreateModeration() {
   return (
@@ -8,7 +8,7 @@ export default function CreateModeration() {
       description="Classifies if text and/or image inputs are potentially harmful."
       docUrl="https://platform.openai.com/docs/api-reference/moderations/create"
     >
-      <CreateModerationForm />
+      <FormCreateModeration />
     </PageWrapper>
   );
 }

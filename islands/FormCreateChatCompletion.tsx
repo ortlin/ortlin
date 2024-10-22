@@ -6,6 +6,7 @@ import { Button } from "../components/Button.tsx";
 import Form from "../components/Form.tsx";
 import File from "./File.tsx";
 import Textarea from "../components/Textarea.tsx";
+import ResultText from "../components/ResultText.tsx";
 
 export default function FormCreateChatCompletion() {
     const prompt = useSignal("");
@@ -13,6 +14,7 @@ export default function FormCreateChatCompletion() {
     const model = useSignal("dall-e-2");
     const temperature = useSignal("1");
     const user = useSignal("");
+    const result = useSignal("");
 
     const handleChange = (name: string, value: string) => {
         if (name === "prompt") prompt.value = value;
@@ -31,7 +33,7 @@ export default function FormCreateChatCompletion() {
 
     return (
         <Form
-            result={null}
+            result={<ResultText text={result.value} />}
         >
             <div class="grid gap-4">
                 <Textarea

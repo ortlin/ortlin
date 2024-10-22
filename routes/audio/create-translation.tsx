@@ -1,5 +1,5 @@
 import PageWrapper from "../../components/PageWrapper.tsx";
-import CreateTranslationForm from "../../islands/CreateTranslationForm.tsx";
+import FormCreateTranslation from "../../islands/FormCreateTranslation.tsx";
 
 export default function CreateTranslation() {
   return (
@@ -8,7 +8,7 @@ export default function CreateTranslation() {
       description="Translates audio into English."
       docUrl="https://platform.openai.com/docs/api-reference/audio/createTranslation"
     >
-      <CreateTranslationForm />
+      <FormCreateTranslation />
     </PageWrapper>
   );
 }
