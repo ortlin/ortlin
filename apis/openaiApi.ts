@@ -47,6 +47,15 @@ const openaiApi = {
         if (!response) return;
         return response.text;
     },
+
+    async createTranslation(body: OpenAI.Audio.TranslationCreateParams) {
+        const client = await this.client();
+        if (!client) return;
+        const request = () => client.audio.translations.create(body);
+        const response = await this.execute(request);
+        if (!response) return;
+        return response.text;
+    },
 };
 
 export default openaiApi;
