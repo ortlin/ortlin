@@ -11,7 +11,7 @@ export default function Form(props: Props) {
             <div class="grid gap-4">
                 {props.children}
             </div>
-            {props.result}
+            <div>{props.result}</div>
         </>
     );
 }
