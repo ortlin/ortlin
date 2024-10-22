@@ -2,7 +2,7 @@ import { Button } from "../components/Button.tsx";
 import Input from "../components/Input.tsx";
 import Select from "../components/Select.tsx";
 import Textarea from "../components/Textarea.tsx";
-import File from "./File.tsx";
+import File from "../components/File.tsx";
 import { WandSparkles } from "lucide-preact";
 import { useSignal } from "@preact/signals";
 import Form from "../components/Form.tsx";
