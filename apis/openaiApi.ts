@@ -65,6 +65,16 @@ const openaiApi = {
         if (!response) return;
         return response.choices[0].message.content;
     },
+
+    async createImage(body: OpenAI.Images.ImageGenerateParams) {
+        const client = await this.client();
+        if (!client) return;
+        const request = () => client.images.generate(body);
+        const response = await this.execute(request);
+        if (!response) return;
+        const base64 = response.data[0].b64_json;
+        return `data:image/png;base64,${base64}`;
+    },
 };
 
 export default openaiApi;
