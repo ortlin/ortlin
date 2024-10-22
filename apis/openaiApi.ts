@@ -56,6 +56,15 @@ const openaiApi = {
         if (!response) return;
         return response.text;
     },
+
+    async createChatCompletion(body: OpenAI.Chat.ChatCompletionCreateParams) {
+        const client = await this.client();
+        if (!client) return;
+        const request = () => client.chat.completions.create(body);
+        const response = await this.execute(request) as OpenAI.ChatCompletion;
+        if (!response) return;
+        return response.choices[0].message.content;
+    },
 };
 
 export default openaiApi;
