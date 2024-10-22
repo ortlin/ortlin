@@ -8,6 +8,7 @@ import Logo from "../components/Logo.tsx";
 
 export default function Layout(props: PageProps) {
   const pathName = new URL(props.url).pathname;
+  const isRoot = pathName === "/";
 
   return (
     <div class="flex h-screen">
@@ -24,8 +25,12 @@ export default function Layout(props: PageProps) {
       </div>
       <div class="flex-grow flex flex-col bg-slate-800 border-l border-slate-700">
         <div class="border-b border-slate-700 min-h-[69px] h-[69px] flex flex-row items-center justify-end px-7 gap-4">
-          <ButtonContribute />
-          <ButtonDonate />
+          {!isRoot && (
+            <>
+              <ButtonContribute />
+              <ButtonDonate />
+            </>
+          )}
         </div>
         <div class="flex-grow p-6 overflow-y-auto">
           <props.Component />
