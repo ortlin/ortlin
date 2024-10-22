@@ -5,19 +5,22 @@ import type { JSX } from "preact/jsx-runtime";
 import { useEffect, useRef } from "preact/hooks";
 import FieldLabel from "./FieldLabel.tsx";
 import FieldHelp, { type Helper } from "./FieldHelp.tsx";
+import fileService from "../services/fileService.ts";
 
 type EventHandler<T extends EventTarget> = JSX.GenericEventHandler<T>;
 type MouseEventHandler<T extends EventTarget> = JSX.MouseEventHandler<T>;
 
 interface Props {
     name: string;
+    image: File;
     helpers: Helper[];
-    onChange: (name: string, value: Blob) => void;
+    onChange: (name: string, mask: Blob) => void;
 }
 
 export default function FieldMaskImage(props: Props) {
     const containerRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const image = useSignal<string>("");
     const containerWidth = useSignal(0);
     const containerHeight = useSignal(0);
     const isDrawing = useSignal(false);
@@ -86,6 +89,10 @@ export default function FieldMaskImage(props: Props) {
         });
     };
 
+    const setImage = async (file: File) => {
+        image.value = await fileService.dataUri(file);
+    };
+
     useEffect(() => {
         if (!containerHeight.value) return;
         resetCanvas();
@@ -99,6 +106,11 @@ export default function FieldMaskImage(props: Props) {
         handleContainerLoad();
     }, []);
 
+    useEffect(() => {
+        setImage(props.image);
+        resetCanvas();
+    }, [props.image]);
+
     return (
         <div>
             <FieldLabel text="Mask image" required={true} />
@@ -110,7 +122,7 @@ export default function FieldMaskImage(props: Props) {
                 <span class="text-sm">Reset mask</span>
             </div>
             <div
-                class="relative"
+                class="relative select-none"
                 ref={containerRef}
                 style={{
                     minHeight: `${containerHeight.value}px`,
@@ -118,7 +130,7 @@ export default function FieldMaskImage(props: Props) {
             >
                 <img
                     class="absolute top-0 left-0 h-auto"
-                    src="https://picsum.photos/800/600"
+                    src={image.value}
                     width={containerWidth.value}
                     onLoad={handleImageLoad}
                 />
