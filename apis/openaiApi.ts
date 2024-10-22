@@ -16,16 +16,16 @@ const openaiApi = {
         return new OpenAI({ apiKey, dangerouslyAllowBrowser: true });
     },
 
-    async execute(request: () => Promise<Response>) {
+    async execute<T>(request: () => Promise<T>) {
         try {
             const response = await request();
             buttonDonateSignal.highlight();
             return response;
         } catch (error) {
-            if (error instanceof OpenAI.APIError) {
-                alertSignal.replaceMessage(error.message);
-                return;
-            }
+            const message = error instanceof Error
+                ? error.message
+                : "Something went wrong. Please retry.";
+            alertSignal.replaceMessage(message);
         }
     },
 
@@ -37,6 +37,15 @@ const openaiApi = {
         if (!response) return;
         const audio = await response.arrayBuffer();
         return bufferService.toDataUri(audio, "audio/mpeg");
+    },
+
+    async createTranscription(body: OpenAI.Audio.TranscriptionCreateParams) {
+        const client = await this.client();
+        if (!client) return;
+        const request = () => client.audio.transcriptions.create(body);
+        const response = await this.execute(request);
+        if (!response) return;
+        return response.text;
     },
 };
 

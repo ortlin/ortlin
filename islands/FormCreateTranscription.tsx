@@ -7,6 +7,7 @@ import { WandSparkles } from "lucide-preact";
 import { useSignal } from "@preact/signals";
 import Form from "../components/Form.tsx";
 import ResultText from "../components/ResultText.tsx";
+import openaiApi from "../apis/openaiApi.ts";
 
 export default function FormCreateTranscription() {
   const file = useSignal<File | null>(null);
@@ -14,7 +15,8 @@ export default function FormCreateTranscription() {
   const language = useSignal("");
   const prompt = useSignal("");
   const temperature = useSignal("0");
-  const result = useSignal("");
+  const output = useSignal("");
+  const isProcessing = useSignal(false);
 
   const handleChange = (name: string, value: string) => {
     if (name === "model") model.value = value;
@@ -23,17 +25,28 @@ export default function FormCreateTranscription() {
     else if (name === "temperature") temperature.value = value;
   };
 
-  const handleFileChange = (name: string, value: File | null) => {
+  const handleFileChange = (_name: string, value: File | null) => {
     file.value = value;
   };
 
-  const handleCreateClick = () => {
-    // TODO
+  const handleCreateClick = async () => {
+    isProcessing.value = true;
+    output.value = "";
+    const result = await openaiApi.createTranscription({
+      file: file.value as File,
+      model: model.value,
+      language: language.value,
+      prompt: prompt.value,
+      temperature: Number(temperature.value),
+    });
+    isProcessing.value = false;
+    if (!result) return;
+    output.value = result;
   };
 
   return (
     <Form
-      result={<ResultText text={result.value} />}
+      result={<ResultText text={output.value} />}
     >
       <div class="grid gap-4">
         <File
@@ -140,6 +153,7 @@ export default function FormCreateTranscription() {
           strokeColor="border-slate-100"
           textColor="text-slate-900"
           fillColor="bg-slate-100"
+          isProcessing={isProcessing.value}
           onClick={handleCreateClick}
         >
           Create transcription

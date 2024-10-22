@@ -7,6 +7,7 @@ import { Button } from "../components/Button.tsx";
 import openaiApi from "../apis/openaiApi.ts";
 import Form from "../components/Form.tsx";
 import ResultAudio from "../components/ResultAudio.tsx";
+import type OpenAI from "openai";
 
 export default function FormCreateSpeech() {
     const model = useSignal("");
@@ -29,7 +30,7 @@ export default function FormCreateSpeech() {
         const result = await openaiApi.createSpeech({
             model: model.value,
             input: input.value,
-            voice: voice.value,
+            voice: voice.value as OpenAI.Audio.SpeechCreateParams["voice"],
             speed: Number(speed.value),
         });
         isProcessing.value = false;
