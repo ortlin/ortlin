@@ -46,7 +46,7 @@ export default function File(props: Props) {
           onChange={handleChange}
           class="invisible w-0 h-0 outline-none"
         />
-        <div class="flex justify-between items-center">
+        <div class="flex justify-between items-center mr-4">
           <div>{filename.value || "Choose file"}</div>
           <Icon
             Icon={FileIcon}

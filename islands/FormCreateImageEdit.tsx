@@ -7,11 +7,12 @@ import Form from "../components/Form.tsx";
 import File from "../components/File.tsx";
 import Textarea from "../components/Textarea.tsx";
 import ResultImage from "../components/ResultImage.tsx";
+import FieldMaskImage from "../components/FieldMaskImage.tsx";
 
 export default function FormCreateImageEdit() {
     const image = useSignal<File | null>(null);
     const prompt = useSignal("");
-    const mask = useSignal<File | null>(null);
+    const mask = useSignal<Blob | null>(null);
     const model = useSignal("dall-e-2");
     const size = useSignal("1024x1024");
     const user = useSignal("");
@@ -26,7 +27,10 @@ export default function FormCreateImageEdit() {
 
     const handleFileChange = (name: string, value: File | null) => {
         if (name === "image") image.value = value;
-        else if (name === "mask") mask.value = value;
+    };
+
+    const handleMaskImageChange = (name: string, maskImage: Blob) => {
+        if (name === "mask") mask.value = maskImage;
     };
 
     const handleCreateClick = async () => {
@@ -66,7 +70,31 @@ export default function FormCreateImageEdit() {
                     ]}
                     onChange={handleChange}
                 />
-                {/* TODO: Add mask field */}
+                {image.value && (
+                    <FieldMaskImage
+                        name="mask"
+                        image={image.value}
+                        helpers={[
+                            {
+                                type: "text",
+                                content:
+                                    "An additional image whose fully transparent areas (e.g. where alpha is zero) indicate where ",
+                            },
+                            { type: "highlight", content: "image" },
+                            {
+                                type: "text",
+                                content:
+                                    " should be edited. Must be a valid PNG file, less than 4MB, and have the same dimensions as ",
+                            },
+                            { type: "highlight", content: "image" },
+                            {
+                                type: "text",
+                                content: ".",
+                            },
+                        ]}
+                        onChange={handleMaskImageChange}
+                    />
+                )}
                 <Select
                     value={model.value}
                     label="Model"
