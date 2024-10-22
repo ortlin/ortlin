@@ -1,10 +1,9 @@
 import type { PageProps } from "$fresh/server.ts";
-import { Button } from "../components/Button.tsx";
-import { Github } from "lucide-preact";
 import Menu from "../components/Menu.tsx";
 import ApiKeyConfigure from "../islands/ApiKeyConfigure.tsx";
 import ButtonDonate from "../islands/ButtonDonate.tsx";
 import Alert from "../islands/Alert.tsx";
+import ButtonContribute from "../components/ButtonContribute.tsx";
 
 export default function Layout(props: PageProps) {
   const pathName = new URL(props.url).pathname;
@@ -27,14 +26,7 @@ export default function Layout(props: PageProps) {
       </div>
       <div class="flex-grow flex flex-col bg-slate-800 border-l border-slate-700">
         <div class="border-b border-slate-700 min-h-[69px] h-[69px] flex flex-row items-center justify-end px-7 gap-4">
-          <Button
-            Icon={Github}
-            strokeColor="border-slate-600"
-            textColor="text-slate-100"
-            link="https://github.com/numfray/numfray"
-          >
-            Contribute to project
-          </Button>
+          <ButtonContribute />
           <ButtonDonate />
         </div>
         <div class="flex-grow p-6 overflow-y-auto">
