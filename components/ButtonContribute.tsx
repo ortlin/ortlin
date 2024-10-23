@@ -7,7 +7,7 @@ export default function ButtonContribute() {
       Icon={Github}
       strokeColor="border-slate-600"
       textColor="text-slate-100"
-      link="https://github.com/numfray/numfray"
+      link="https://github.com/ortlin/ortlin"
     >
       <div class="hidden md:block">
         Contribute to project

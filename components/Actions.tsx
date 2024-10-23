@@ -4,7 +4,7 @@ import ButtonContribute from "./ButtonContribute.tsx";
 
 export default function Actions() {
   return (
-    <div class="flex gap-4 md:gap-3 lg-gap-4">
+    <div class="flex gap-2 md:gap-3">
       <ButtonContribute />
       <ButtonDonate />
       <ButtonMenu />
