@@ -23,21 +23,29 @@ export default function ResultModeration(props: Props) {
     });
     return (
         <div>
-            <p>
+            <p class="text-slate-300 mb-2">
                 Flagged: <span>{toValue(props.flagged)}</span>
             </p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Category</th>
-                        <th>Flagged</th>
-                        <th>Score</th>
+            <table class="text-slate-100">
+                <thead class="text-left bg-slate-900">
+                    <tr class="">
+                        <th class="px-2 py-2 font-medium rounded-tl-xl">
+                            Category
+                        </th>
+                        <th class="px-2 py-2 font-medium">Flagged</th>
+                        <th class="px-2 py-2 font-medium rounded-tr-xl">
+                            Score
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     {categories.map((category) => (
                         <tr>
-                            {category.map((value) => <td>{value}</td>)}
+                            {category.map((value) => (
+                                <td class="px-2 py-1 border-b border-slate-700">
+                                    {value}
+                                </td>
+                            ))}
                         </tr>
                     ))}
                 </tbody>
