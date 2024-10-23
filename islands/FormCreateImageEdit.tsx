@@ -8,6 +8,8 @@ import File from "../components/File.tsx";
 import Textarea from "../components/Textarea.tsx";
 import ResultImage from "../components/ResultImage.tsx";
 import FieldMaskImage from "../components/FieldMaskImage.tsx";
+import openaiApi from "../apis/openaiApi.ts";
+import type OpenAI from "openai";
 
 export default function FormCreateImageEdit() {
     const image = useSignal<File | null>(null);
@@ -16,7 +18,8 @@ export default function FormCreateImageEdit() {
     const model = useSignal("dall-e-2");
     const size = useSignal("1024x1024");
     const user = useSignal("");
-    const updatedImage = useSignal("");
+    const output = useSignal("");
+    const isProcessing = useSignal(false);
 
     const handleChange = (name: string, value: string) => {
         if (name === "prompt") prompt.value = value;
@@ -34,12 +37,25 @@ export default function FormCreateImageEdit() {
     };
 
     const handleCreateClick = async () => {
-        // TODO
+        isProcessing.value = true;
+        output.value = "";
+        const result = await openaiApi.createImageEdit({
+            image: image.value as File,
+            mask: mask.value as File,
+            prompt: prompt.value,
+            model: model.value,
+            size: size.value as OpenAI.Images.ImageEditParams["size"],
+            user: user.value,
+            response_format: "b64_json",
+        });
+        isProcessing.value = false;
+        if (!result) return;
+        output.value = result;
     };
 
     return (
         <Form
-            result={<ResultImage image={updatedImage.value} />}
+            result={<ResultImage image={output.value} />}
         >
             <div class="grid gap-4">
                 <File
@@ -55,20 +71,6 @@ export default function FormCreateImageEdit() {
                         },
                     ]}
                     onChange={handleFileChange}
-                />
-                <Textarea
-                    value={prompt.value}
-                    label="Prompt"
-                    required={true}
-                    name="prompt"
-                    helpers={[
-                        {
-                            type: "text",
-                            content:
-                                "A text description of the desired image(s). The maximum length is 1000 characters.",
-                        },
-                    ]}
-                    onChange={handleChange}
                 />
                 {image.value && (
                     <FieldMaskImage
@@ -95,6 +97,20 @@ export default function FormCreateImageEdit() {
                         onChange={handleMaskImageChange}
                     />
                 )}
+                <Textarea
+                    value={prompt.value}
+                    label="Prompt"
+                    required={true}
+                    name="prompt"
+                    helpers={[
+                        {
+                            type: "text",
+                            content:
+                                "A text description of the desired image(s). The maximum length is 1000 characters.",
+                        },
+                    ]}
+                    onChange={handleChange}
+                />
                 <Select
                     value={model.value}
                     label="Model"
@@ -181,6 +197,7 @@ export default function FormCreateImageEdit() {
                     strokeColor="border-slate-100"
                     textColor="text-slate-900"
                     fillColor="bg-slate-100"
+                    isProcessing={isProcessing.value}
                     onClick={handleCreateClick}
                 >
                     Create image edit
