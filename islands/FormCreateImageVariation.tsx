@@ -6,13 +6,16 @@ import { Button } from "../components/Button.tsx";
 import Form from "../components/Form.tsx";
 import File from "../components/File.tsx";
 import ResultImage from "../components/ResultImage.tsx";
+import openaiApi from "../apis/openaiApi.ts";
+import type OpenAI from "openai";
 
 export default function FormCreateImageVariation() {
     const image = useSignal<File | null>(null);
     const model = useSignal("dall-e-2");
     const size = useSignal("1024x1024");
     const user = useSignal("");
-    const updatedImage = useSignal("");
+    const output = useSignal("");
+    const isProcessing = useSignal(false);
 
     const handleChange = (name: string, value: string) => {
         if (name === "model") model.value = value;
@@ -25,12 +28,24 @@ export default function FormCreateImageVariation() {
     };
 
     const handleCreateClick = async () => {
-        // TODO
+        isProcessing.value = true;
+        output.value = "";
+        const result = await openaiApi.createImageVariation({
+            image: image.value as File,
+            model: model.value,
+            size: size
+                .value as OpenAI.Images.ImageCreateVariationParams["size"],
+            user: user.value,
+            response_format: "b64_json",
+        });
+        isProcessing.value = false;
+        if (!result) return;
+        output.value = result;
     };
 
     return (
         <Form
-            result={<ResultImage image={updatedImage.value} />}
+            result={<ResultImage image={output.value} />}
         >
             <div class="grid gap-4">
                 <File
@@ -133,6 +148,7 @@ export default function FormCreateImageVariation() {
                     strokeColor="border-slate-100"
                     textColor="text-slate-900"
                     fillColor="bg-slate-100"
+                    isProcessing={isProcessing.value}
                     onClick={handleCreateClick}
                 >
                     Create image variation

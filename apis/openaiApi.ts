@@ -85,6 +85,16 @@ const openaiApi = {
         const base64 = response.data[0].b64_json;
         return `data:image/png;base64,${base64}`;
     },
+
+    async createImageVariation(body: OpenAI.Images.ImageCreateVariationParams) {
+        const client = await this.client();
+        if (!client) return;
+        const request = () => client.images.createVariation(body);
+        const response = await this.execute(request);
+        if (!response) return;
+        const base64 = response.data[0].b64_json;
+        return `data:image/png;base64,${base64}`;
+    },
 };
 
 export default openaiApi;
