@@ -15,7 +15,8 @@ const apiKeyService = {
         const data = { key };
         const result = await apiKeyApi.encrypt(data);
         if (!result) return false;
-        localStorage.setItem(this.name, key);
+        localStorage.setItem(this.name, result.encryptedKey);
+        pool.key = key;
         return true;
     },
 
