@@ -7,14 +7,18 @@ import Form from "../components/Form.tsx";
 import File from "../components/File.tsx";
 import Textarea from "../components/Textarea.tsx";
 import ResultText from "../components/ResultText.tsx";
+import openaiApi from "../apis/openaiApi.ts";
+import type OpenAI from "openai";
+import fileService from "../services/fileService.ts";
 
 export default function FormCreateChatCompletion() {
     const prompt = useSignal("");
-    const image = useSignal<File | null>(null);
-    const model = useSignal("dall-e-2");
+    const image = useSignal("");
+    const model = useSignal("");
     const temperature = useSignal("1");
     const user = useSignal("");
-    const result = useSignal("");
+    const output = useSignal("");
+    const isProcessing = useSignal(false);
 
     const handleChange = (name: string, value: string) => {
         if (name === "prompt") prompt.value = value;
@@ -23,17 +27,44 @@ export default function FormCreateChatCompletion() {
         else if (name === "user") user.value = value;
     };
 
-    const handleFileChange = (name: string, value: File | null) => {
-        if (name === "image") image.value = value;
+    const handleFileChange = async (name: string, value: File | null) => {
+        if (name === "image") {
+            if (!value) image.value = "";
+            if (value) image.value = await fileService.dataUri(value);
+        }
     };
 
     const handleCreateClick = async () => {
-        // TODO
+        isProcessing.value = true;
+        output.value = "";
+        const content: OpenAI.ChatCompletionContentPart[] = [{
+            type: "text",
+            text: prompt.value,
+        }];
+        if (image.value) {
+            const imageContent: OpenAI.ChatCompletionContentPartImage = {
+                type: "image_url",
+                image_url: {
+                    url: image.value,
+                },
+            };
+            content.push(imageContent);
+        }
+        const result = await openaiApi.createChatCompletion({
+            messages: [{
+                content: content,
+                role: "user",
+            }],
+            model: model.value,
+        });
+        isProcessing.value = false;
+        if (!result) return;
+        output.value = result;
     };
 
     return (
         <Form
-            result={<ResultText text={result.value} />}
+            result={<ResultText text={output.value} />}
         >
             <div class="grid gap-4">
                 <Textarea
@@ -137,6 +168,7 @@ export default function FormCreateChatCompletion() {
                     strokeColor="border-slate-100"
                     textColor="text-slate-900"
                     fillColor="bg-slate-100"
+                    isProcessing={isProcessing.value}
                     onClick={handleCreateClick}
                 >
                     Create chat completion
