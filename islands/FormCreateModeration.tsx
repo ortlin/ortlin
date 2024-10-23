@@ -4,25 +4,42 @@ import Textarea from "../components/Textarea.tsx";
 import { WandSparkles } from "lucide-preact";
 import { useSignal } from "@preact/signals";
 import Form from "../components/Form.tsx";
-import ResultText from "../components/ResultText.tsx";
+import openaiApi from "../apis/openaiApi.ts";
+import OpenAI from "openai";
+import ResultModeration from "../components/ResultModeration.tsx";
 
 export default function FormCreateModeration() {
   const input = useSignal("");
   const model = useSignal("omni-moderation-latest");
-  const result = useSignal("");
+  const output = useSignal<OpenAI.Moderation | null>(null);
+  const isProcessing = useSignal(false);
 
   const handleChange = (name: string, value: string) => {
     if (name === "input") input.value = value;
     else if (name === "model") model.value = value;
   };
 
-  const handleCreateClick = () => {
-    // TODO
+  const handleCreateClick = async () => {
+    isProcessing.value = true;
+    output.value = null;
+    const result = await openaiApi.createModeration({
+      input: input.value,
+      model: model.value,
+    });
+    isProcessing.value = false;
+    if (!result) return;
+    output.value = result;
   };
 
   return (
     <Form
-      result={<ResultText text={result.value} />}
+      result={output.value && (
+        <ResultModeration
+          flagged={output.value.flagged}
+          flags={output.value.categories}
+          scores={output.value.category_scores}
+        />
+      )}
     >
       <div class="grid gap-4">
         <Textarea
@@ -93,6 +110,7 @@ export default function FormCreateModeration() {
           strokeColor="border-slate-100"
           textColor="text-slate-900"
           fillColor="bg-slate-100"
+          isProcessing={isProcessing.value}
           onClick={handleCreateClick}
         >
           Create moderation
