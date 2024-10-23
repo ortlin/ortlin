@@ -1,10 +1,9 @@
 import type { PageProps } from "$fresh/server.ts";
 import Menu from "../components/Menu.tsx";
 import ApiKeyConfigure from "../islands/ApiKeyConfigure.tsx";
-import ButtonDonate from "../islands/ButtonDonate.tsx";
 import Alert from "../islands/Alert.tsx";
-import ButtonContribute from "../components/ButtonContribute.tsx";
 import Logo from "../components/Logo.tsx";
+import Actions from "../components/Actions.tsx";
 
 export default function Layout(props: PageProps) {
   const pathName = new URL(props.url).pathname;
@@ -24,13 +23,8 @@ export default function Layout(props: PageProps) {
         </div>
       </div>
       <div class="flex-grow flex flex-col bg-slate-800 border-l border-slate-700">
-        <div class="border-b border-slate-700 min-h-[69px] h-[69px] flex flex-row items-center justify-end px-7 gap-4">
-          {!isRoot && (
-            <>
-              <ButtonContribute />
-              <ButtonDonate />
-            </>
-          )}
+        <div class="border-b border-slate-700 min-h-[69px] h-[69px] flex flex-row items-center justify-end px-7">
+          {!isRoot && <Actions />}
         </div>
         <div class="flex-grow p-6 overflow-y-auto">
           <props.Component />

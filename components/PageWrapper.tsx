@@ -21,7 +21,7 @@ export default function PageWrapper(props: Props) {
       <p class="text-slate-300 leading-[29px] mb-5">
         {props.description}
       </p>
-      <div class="grid grid-cols-2 gap-7">
+      <div class="grid lg:grid-cols-2 gap-7">
         {props.children}
       </div>
     </div>
