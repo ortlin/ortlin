@@ -1,12 +1,12 @@
-# Numfray - OpenAI API Frontend Graphical User Interface (GUI)
+# Ortlin - OpenAI API Frontend Graphical User Interface (GUI)
 
-Welcome to Numfray! This project is all about making it easier for you to
+Welcome to Ortlin! This project is all about making it easier for you to
 interact with the OpenAI API through a simple and friendly graphical user
 interface.
 
-Whether you're a developer or just curious about AI, Numfray provides an easy
-way to explore the power of OpenAI’s API without getting bogged down in
-technical details.
+Whether you're a developer or just curious about AI, Ortlin provides an easy way
+to explore the power of OpenAI’s API without getting bogged down in technical
+details.
 
 ### Usage
 
@@ -19,7 +19,7 @@ curl -fsSL https://deno.land/install.sh | sh
 2. Clone this repository
 
 ```
-git clone https://github.com/numfray/numfray.git
+git clone https://github.com/ortlin/ortlin.git
 ```
 
 3. Start the project

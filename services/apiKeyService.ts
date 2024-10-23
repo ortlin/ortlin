@@ -9,7 +9,7 @@ const pool: Pool = {
 };
 
 const apiKeyService = {
-    name: "numfray_api_key",
+    name: "ortlin_api_key",
 
     async set(key: string): Promise<boolean> {
         const data = { key };

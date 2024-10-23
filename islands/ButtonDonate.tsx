@@ -11,7 +11,7 @@ export default function ButtonDonate() {
             Icon={Heart}
             strokeColor="border-cyan-800"
             textColor="text-cyan-300"
-            link="https://opencollective.com/numfray/donate"
+            link="https://opencollective.com/ortlin/donate"
             class={buttonClass}
         >
             <div class="hidden md:block">
