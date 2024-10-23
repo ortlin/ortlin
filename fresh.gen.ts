@@ -19,6 +19,7 @@ import * as $moderations_create_moderation from "./routes/moderations/create-mod
 import * as $Alert from "./islands/Alert.tsx";
 import * as $ApiKeyConfigure from "./islands/ApiKeyConfigure.tsx";
 import * as $ButtonDonate from "./islands/ButtonDonate.tsx";
+import * as $ButtonMenu from "./islands/ButtonMenu.tsx";
 import * as $FormCreateChatCompletion from "./islands/FormCreateChatCompletion.tsx";
 import * as $FormCreateImage from "./islands/FormCreateImage.tsx";
 import * as $FormCreateImageEdit from "./islands/FormCreateImageEdit.tsx";
@@ -27,6 +28,7 @@ import * as $FormCreateModeration from "./islands/FormCreateModeration.tsx";
 import * as $FormCreateSpeech from "./islands/FormCreateSpeech.tsx";
 import * as $FormCreateTranscription from "./islands/FormCreateTranscription.tsx";
 import * as $FormCreateTranslation from "./islands/FormCreateTranslation.tsx";
+import * as $Sidebar from "./islands/Sidebar.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -52,6 +54,7 @@ const manifest = {
     "./islands/Alert.tsx": $Alert,
     "./islands/ApiKeyConfigure.tsx": $ApiKeyConfigure,
     "./islands/ButtonDonate.tsx": $ButtonDonate,
+    "./islands/ButtonMenu.tsx": $ButtonMenu,
     "./islands/FormCreateChatCompletion.tsx": $FormCreateChatCompletion,
     "./islands/FormCreateImage.tsx": $FormCreateImage,
     "./islands/FormCreateImageEdit.tsx": $FormCreateImageEdit,
@@ -60,6 +63,7 @@ const manifest = {
     "./islands/FormCreateSpeech.tsx": $FormCreateSpeech,
     "./islands/FormCreateTranscription.tsx": $FormCreateTranscription,
     "./islands/FormCreateTranslation.tsx": $FormCreateTranslation,
+    "./islands/Sidebar.tsx": $Sidebar,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

@@ -53,11 +53,11 @@ export default function ModalApiKeyConfigure() {
     }, [apiKeyManageSignal.isModalVisible.value]);
     return (apiKeyManageSignal.isModalVisible.value || null) && (
         <div
-            class="absolute left-0 top-0 w-full h-full bg-slate-950 bg-opacity-30 z-40 flex justify-center items-center"
+            class="fixed left-0 top-0 w-full h-full bg-slate-950 bg-opacity-30 z-40 flex justify-center items-center"
             onMouseDown={handleOverlayMouseDown}
         >
             <div
-                class="bg-slate-900 border border-slate-700 rounded-3xl p-6 w-96"
+                class="bg-slate-900 border border-slate-700 rounded-3xl p-6 max-w-96 mx-5"
                 onMouseDown={handleCardMouseDown}
             >
                 <h3 class="text-lg text-slate-100 font-semibold mb-1">
@@ -89,7 +89,7 @@ export default function ModalApiKeyConfigure() {
                         onChange={handleInputChange}
                     />
                 </div>
-                <div class="mt-4 flex justify-end gap-4">
+                <div class="mt-4 flex justify-end gap-4 flex-wrap">
                     <Button
                         strokeColor="border-slate-700"
                         textColor="text-slate-100"
