@@ -9,7 +9,7 @@ const buttonDonateSignal = {
             setTimeout(() => {
                 this.isHighlighting.value = false;
             }, 1000);
-        }, 1000);
+        }, 5000);
     },
 };
 
