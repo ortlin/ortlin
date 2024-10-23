@@ -14,7 +14,9 @@ export default function ButtonDonate() {
             link="https://opencollective.com/numfray/donate"
             class={buttonClass}
         >
-            Donate to our collective
+            <div class="hidden md:block">
+                Donate to our collective
+            </div>
         </Button>
     );
 }
