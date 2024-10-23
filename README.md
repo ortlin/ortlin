@@ -1,5 +1,4 @@
-# Ortlin - OpenAI API Graphical User Interface
-
+# Ortlin
 Ortlin is a web-based graphical user interface for interacting with OpenAI
 models and APIs.
 
