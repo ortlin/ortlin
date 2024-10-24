@@ -9,7 +9,7 @@ export default function App({ Component }: PageProps) {
           Ortlin - OpenAI API Graphical User Interface
         </title>
         <link rel="stylesheet" href="/styles.css" />
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/icon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
