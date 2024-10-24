@@ -5,6 +5,7 @@
 .env.production.local
 .env.local
 .todo
+.DS_Store
 
 # Fresh build directory
 _fresh/
