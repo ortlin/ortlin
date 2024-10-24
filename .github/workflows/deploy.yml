@@ -23,6 +23,14 @@ jobs:
         with:
           deno-version: v1.x
 
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install step
+        run: "deno install"
+
       - name: Build step
         run: "deno task build"
 
@@ -30,5 +38,5 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "ortlin"
-          entrypoint: ""
+          entrypoint: "main.ts"
           root: ""
