@@ -6,7 +6,7 @@ export default function App({ Component }: PageProps) {
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>
-          Ortlin - GUI for OpenAI API
+          Ortlin - OpenAI API Graphical User Interface
         </title>
         <link rel="stylesheet" href="/styles.css" />
         <link rel="icon" href="/favicon.png" />
