@@ -23,14 +23,6 @@ jobs:
         with:
           deno-version: v1.x
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-
-      - name: Install step
-        run: "deno run install"
-
       - name: Build step
         run: "deno task build"
 
