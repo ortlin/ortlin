@@ -1,4 +1,3 @@
----
 services:
   ortlin:
     image: renjithspace/ortlin:latest
