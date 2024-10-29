@@ -88,8 +88,9 @@ docker run -d --name ortlin -t -i -p 8000:8000 renjithspace/ortlin:latest
 
 ### Docker Compose
 
-If you prefer to use Docker Compose, you can run it following command:
+If you prefer using Docker Compose, you can run it with the provided
+`compose.yml` configuration file.
 
 ```sh
-docker-compose -f compose.yml up -d
+docker-compose up -d
 ```
