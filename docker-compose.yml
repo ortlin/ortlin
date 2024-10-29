@@ -1,0 +1,8 @@
+---
+services:
+  ortlin:
+    image: renjithspace/ortlin:latest
+    container_name: ortlin
+    ports:
+      - 8000:8000
+    restart: unless-stopped

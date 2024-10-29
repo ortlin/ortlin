@@ -85,3 +85,13 @@ docker pull renjithspace/ortlin:latest
 ```sh
 docker run -d --name ortlin -t -i -p 8000:8000 renjithspace/ortlin:latest
 ```
+
+### Docker Compose
+
+If you prefer to use Docker Compose, you can use the sample docker-compose.yml file included in the repository.
+
+```sh
+git clone https://github.com/ortlin/ortlin.git ortlin
+cd ortlin
+docker compose up -d
+```
