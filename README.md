@@ -44,5 +44,6 @@ git clone https://github.com/ortlin/ortlin.git
 
 ```sh
 cd ortlin
+deno task key:generate
 deno task start
 ```
