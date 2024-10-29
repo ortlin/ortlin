@@ -10,7 +10,7 @@
     "update": "deno run -A -r https://fresh.deno.dev/update .",
     "key:generate": "deno run -A tasks/appKeyGenerate.ts",
     "docker:publish": "docker build --build-arg GIT_REVISION=$(git rev-parse HEAD) -t renjithspace/ortlin:latest . && docker push renjithspace/ortlin:latest",
-    "docker:run": "docker pull renjithspace/ortlin:latest && docker run -d --name ortlin -p 8000:8000 renjithspace/ortlin:latest"
+    "docker:run": "docker pull renjithspace/ortlin:latest && docker run -d --name ortlin -t -i -p 8000:8000 renjithspace/ortlin:latest"
   },
   "lint": {
     "rules": {

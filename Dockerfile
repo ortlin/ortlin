@@ -7,6 +7,8 @@ WORKDIR /app
 
 COPY . .
 RUN deno cache main.ts
+RUN deno task build
+RUN deno task key:generate
 
 EXPOSE 8000
 

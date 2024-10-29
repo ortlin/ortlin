@@ -83,5 +83,5 @@ docker pull renjithspace/ortlin:latest
 2. Run the container
 
 ```sh
-docker run -d --name ortlin -p 8000:8000 renjithspace/ortlin:latest
+docker run -d --name ortlin -t -i -p 8000:8000 renjithspace/ortlin:latest
 ```
